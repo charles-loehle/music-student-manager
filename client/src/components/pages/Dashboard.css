@@ -1,11 +1,15 @@
 body {
-  font-size: 0.875rem;
+	font-size: 0.875rem;
+}
+
+.Dashboard {
+	margin-top: 1rem;
 }
 
 .feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
+	width: 16px;
+	height: 16px;
+	vertical-align: text-bottom;
 }
 
 /*
@@ -13,59 +17,59 @@ body {
  */
 
 .sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100; /* Behind the navbar */
+	padding: 48px 0 0; /* Height of navbar */
+	box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 767.98px) {
-  .sidebar {
-    top: 5rem;
-  }
+	.sidebar {
+		top: 5rem;
+	}
 }
 
 .sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+	position: relative;
+	top: 0;
+	height: calc(100vh - 48px);
+	padding-top: 0.5rem;
+	overflow-x: hidden;
+	overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
-  .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-  }
+	.sidebar-sticky {
+		position: -webkit-sticky;
+		position: sticky;
+	}
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
+	font-weight: 500;
+	color: #333;
 }
 
 .sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
+	margin-right: 4px;
+	color: #999;
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+	color: #007bff;
 }
 
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
-  color: inherit;
+	color: inherit;
 }
 
 .sidebar-heading {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+	font-size: 0.75rem;
+	text-transform: uppercase;
 }
 
 /*
@@ -73,31 +77,92 @@ body {
  */
 
 .navbar-brand {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 1rem;
-  /* background-color: rgba(0, 0, 0, 0.25);
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	font-size: 1rem;
+	/* background-color: rgba(0, 0, 0, 0.25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25); */
 }
 
 .navbar .navbar-toggler {
-  top: 0.25rem;
-  right: 1rem;
+	top: 0.25rem;
+	right: 1rem;
 }
 
 .navbar .form-control {
-  padding: 0.75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
+	padding: 0.75rem 1rem;
+	border-width: 0;
+	border-radius: 0;
 }
 
 .form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.1);
 }
 
 .form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+	border-color: transparent;
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/*
+BUTTONS
+*/
+
+.btn-outline-secondary {
+	color: #477dc9;
+	border: 2px solid #477dc9;
+	border-radius: 8px;
+}
+
+.btn-outline-secondary:hover {
+	color: #fff;
+	background-color: #477dc9;
+	border-color: #477dc9;
+}
+
+h1.h2 {
+	font-size: 1.2rem;
+	font-weight: 400;
+}
+
+.LessonsTable h2,
+.StudentsTable h2 {
+	font-size: 1.4rem;
+	font-weight: 400;
+}
+
+thead {
+	color: #7d7d7d;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+}
+
+tbody tr {
+	font-size: 1rem;
+}
+
+.badge-success {
+	color: #173d30;
+	background-color: #c0fbce;
+}
+
+.badge-danger {
+	color: #5f413f;
+	background-color: #fdc4c0;
+}
+
+.table-actions .btn {
+	margin-right: 0.7rem;
+}
+
+.table-actions a.btn {
+	font-size: 0.9rem;
+	padding: 0.2rem 0.5rem;
+}
+
+.table td,
+.table th {
+	padding: 1.2rem;
 }

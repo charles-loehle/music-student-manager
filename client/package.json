@@ -19,8 +19,7 @@
     "react-scripts": "3.4.1",
     "react-transition-group": "^4.3.0",
     "reactstrap": "^8.4.1",
-    "uuid": "^8.0.0",
-    "websocket-extensions": "^0.1.4"
+    "uuid": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

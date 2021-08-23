@@ -1,34 +1,52 @@
 .navbar {
-  background-color: var(--primary-background);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.7rem 2rem;
-  z-index: 1;
-  width: 100%;
-  border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
-  margin-bottom: 1rem;
+	background-color: var(--primary-background);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.7rem 2rem;
+	z-index: 1;
+	width: 100%;
+	border-bottom: solid 1px var(--primary-color);
+	opacity: 0.9;
+	margin-bottom: 1rem;
+}
+
+ul.navbar-nav.ml-auto.px-3 {
+	flex-direction: row;
 }
 
 ul.navbar-nav.px-3 {
-  flex-direction: row;
+	flex-direction: row;
 }
 
 .navbar ul {
-  display: flex;
+	display: flex;
+}
+
+ul.navbar-nav .nav-link {
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
 }
 
 .navbar a {
-  color: var(--primary-color);
-  padding: 0.45rem;
-  margin: 0 0.25rem;
+	color: var(--primary-color);
+	padding: 0.45rem;
+	margin: 0 0.25rem;
 }
 
 .navbar a:hover {
-  color: var(--secondary-background);
+	color: var(--secondary-background);
 }
 
 .navbar .welcome span {
-  margin-right: 0.6rem;
+	margin-right: 0.6rem;
+}
+
+.navbar.navbar-dark.bg-dark {
+	background-color: #477dc9 !important;
+	margin-bottom: 0;
+}
+
+.SidebarMenu nav#sidebarMenu .bg-light {
+	background-color: #20364d !important;
 }

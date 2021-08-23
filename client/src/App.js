@@ -20,7 +20,8 @@ import CreateLesson from './components/lessons/CreateLesson';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 // import Alerts from './components/layout/Alerts';
-// import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 import StudentState from './context/student/StudentState';
@@ -30,57 +31,57 @@ import AlertState from './context/alert/AlertState';
 import setAuthToken from './utils/setAuthToken';
 
 if (localStorage.token) {
-  setAuthToken(localStorage.token);
+	setAuthToken(localStorage.token);
 }
 
 const App = () => {
-  return (
-    <AuthState>
-      <StudentState>
-        <LessonState>
-          <AlertState>
-            <Router>
-              <div className='App'>
-                {/* <NavbarComponent /> */}
-                <NavbarTestComponent />
-                <Switch>
-                  <Route exact path='/' component={Landing} />
-                  <Route exact path='/about' component={About} />
-                  <Route exact path='/register' component={Register} />
-                  <Route exact path='/login' component={Login} />
-                  <PrivateRoute exact path='/dashboard' component={Dashboard} />
-                  <PrivateRoute exact path='/students' component={Students} />
-                  <PrivateRoute exact path='/student/:id' component={Student} />
-                  <PrivateRoute
-                    exact
-                    path='/create-student'
-                    component={CreateStudent}
-                  />
-                  <PrivateRoute
-                    exact
-                    path='/edit-student'
-                    component={EditStudent}
-                  />
-                  <PrivateRoute exact path='/lessons' component={Lessons} />
-                  <PrivateRoute exact path='/lesson/:id' component={Lesson} />
-                  <PrivateRoute
-                    exact
-                    path='/edit-lesson'
-                    component={EditLesson}
-                  />
-                  <PrivateRoute
-                    exact
-                    path='/create-lesson'
-                    component={CreateLesson}
-                  />
-                </Switch>
-              </div>
-            </Router>
-          </AlertState>
-        </LessonState>
-      </StudentState>
-    </AuthState>
-  );
+	return (
+		<AuthState>
+			<StudentState>
+				<LessonState>
+					<AlertState>
+						<Router>
+							<div className="App">
+								{/* <NavbarComponent /> */}
+								<NavbarTestComponent />
+								<Switch>
+									<Route exact path="/" component={Landing} />
+									<Route exact path="/about" component={About} />
+									<Route exact path="/register" component={Register} />
+									<Route exact path="/login" component={Login} />
+									<PrivateRoute exact path="/dashboard" component={Dashboard} />
+									<PrivateRoute exact path="/students" component={Students} />
+									<PrivateRoute exact path="/student/:id" component={Student} />
+									<PrivateRoute
+										exact
+										path="/create-student"
+										component={CreateStudent}
+									/>
+									<PrivateRoute
+										exact
+										path="/edit-student"
+										component={EditStudent}
+									/>
+									<PrivateRoute exact path="/lessons" component={Lessons} />
+									<PrivateRoute exact path="/lesson/:id" component={Lesson} />
+									<PrivateRoute
+										exact
+										path="/edit-lesson"
+										component={EditLesson}
+									/>
+									<PrivateRoute
+										exact
+										path="/create-lesson"
+										component={CreateLesson}
+									/>
+								</Switch>
+							</div>
+						</Router>
+					</AlertState>
+				</LessonState>
+			</StudentState>
+		</AuthState>
+	);
 };
 
 export default App;

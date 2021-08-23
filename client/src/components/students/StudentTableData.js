@@ -7,81 +7,74 @@ import AlertContext from '../../context/alert/alertContext';
 
 Modal.setAppElement('#root');
 const StudentTableData = ({ student }) => {
-  const studentContext = useContext(StudentContext);
-  const alertContext = useContext(AlertContext);
+	const studentContext = useContext(StudentContext);
+	const alertContext = useContext(AlertContext);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const { deleteStudent, setCurrent, clearCurrent } = studentContext;
-  const { setAlert } = alertContext;
+	const { deleteStudent, setCurrent, clearCurrent } = studentContext;
+	const { setAlert } = alertContext;
 
-  const {
-    _id,
-    name,
-    parentName,
-    email,
-    alternateEmail,
-    phone,
-    instrument,
-  } = student;
+	const { _id, name, parentName, email, alternateEmail, phone, instrument } =
+		student;
 
-  const onDelete = () => {
-    deleteStudent(_id);
-    setModalIsOpen(false);
-    clearCurrent();
-    setAlert('Student Deleted', 'danger');
-  };
+	const onDelete = () => {
+		deleteStudent(_id);
+		setModalIsOpen(false);
+		clearCurrent();
+		setAlert('Student Deleted', 'danger');
+	};
 
-  // send student data to context state to populate the form in EditStudent.js
-  const onEdit = () => {
-    setCurrent(student);
-  };
+	// send student data to context state to populate the form in EditStudent.js
+	const onEdit = () => {
+		setCurrent(student);
+	};
 
-  // const onNewLesson = () => {
-  //   setCurrent(student);
-  // };
+	// const onNewLesson = () => {
+	//   setCurrent(student);
+	// };
 
-  return (
-    <tr>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(128,128,128,0.3)',
-          },
-          content: {
-            top: '102px',
-            left: '103px',
-            right: '103px',
-            bottom: '275px',
-          },
-        }}
-      >
-        <h2>Are you sure you want to delete this student and their lessons?</h2>
-        <p>This action cannot be undone</p>
-        <div>
-          <button onClick={onDelete}>Delete Student</button>
-          <button onClick={() => setModalIsOpen(false)}>Cancel</button>
-        </div>
-      </Modal>
+	return (
+		<tr>
+			<Modal
+				isOpen={modalIsOpen}
+				onRequestClose={() => setModalIsOpen(false)}
+				style={{
+					overlay: {
+						backgroundColor: 'rgba(128,128,128,0.3)',
+					},
+					content: {
+						top: '102px',
+						left: '103px',
+						right: '103px',
+						bottom: '275px',
+					},
+				}}
+			>
+				<h2>Are you sure you want to delete this student and their lessons?</h2>
+				<p>This action cannot be undone</p>
+				<div>
+					<button onClick={onDelete}>Delete Student</button>
+					<button onClick={() => setModalIsOpen(false)}>Cancel</button>
+				</div>
+			</Modal>
 
-      <td>{name}</td>
-      <td>{instrument}</td>
-      <td>{parentName}</td>
-      <td>{email}</td>
-      <td>{alternateEmail}</td>
-      <td>{phone}</td>
-      <td>
-        <div className='btn-group' role='group' aria-label='3 buttons'>
-          <Link
-            onClick={onEdit}
-            to='/edit-student'
-            className='btn btn-secondary'
-          >
-            <i className='fas fa-search'></i>
-          </Link>
-          {/* <button
+			<td>{name}</td>
+			<td>{instrument}</td>
+			<td>{parentName}</td>
+			<td>{email}</td>
+			<td>{alternateEmail}</td>
+			<td>{phone}</td>
+			<td>
+				<div className="table-actions" role="group" aria-label="3 buttons">
+					<Link
+						onClick={onEdit}
+						to="/edit-student"
+						className="btn btn-outline-secondary"
+					>
+						Edit
+					</Link>
+					{/* <button
             className='btn btn-danger btn-sm'
             onClick={() => setModalIsOpen(true)}
           >
@@ -97,14 +90,14 @@ const StudentTableData = ({ student }) => {
           >
             New Lesson
           </Link> */}
-        </div>
-      </td>
-    </tr>
-  );
+				</div>
+			</td>
+		</tr>
+	);
 };
 
 StudentTableData.propTypes = {
-  student: PropTypes.object.isRequired,
+	student: PropTypes.object.isRequired,
 };
 
 export default StudentTableData;
