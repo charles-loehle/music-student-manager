@@ -122,6 +122,30 @@ BUTTONS
 	border-color: #477dc9;
 }
 
+.LessonsTable .table-actions a.btn-outline-secondary:active {
+	color: #fff;
+	background-color: #477dc9;
+	border-color: #477dc9;
+}
+
+.btn-outline-secondary:focus {
+	color: #fff;
+	background-color: #477dc9;
+	box-shadow: 0 0 0 0.2rem rgb(71, 125, 201, 50%);
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #477dc9;
+	border: 2px solid #477dc9;
+}
+
+.btn-primary:hover {
+	color: #fff;
+	background-color: #3a76c9;
+	border-color: #477dc9;
+}
+
 h1.h2 {
 	font-size: 1.2rem;
 	font-weight: 400;
@@ -131,6 +155,11 @@ h1.h2 {
 .StudentsTable h2 {
 	font-size: 1.4rem;
 	font-weight: 400;
+}
+
+.LessonsTable i.fas,
+.StudentsTable i.fas {
+	color: #477dc9;
 }
 
 thead {
