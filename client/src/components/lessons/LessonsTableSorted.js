@@ -1,15 +1,17 @@
 import React, { useContext, useEffect } from 'react';
+import moment from 'moment';
 import LessonContext from '../../context/lesson/lessonContext';
 import LessonTableData from './LessonTableData';
 import Spinner from '../layout/Spinner';
 
-const LessonsTable = () => {
+const LessonsTableSorted = () => {
 	const lessonContext = useContext(LessonContext);
 	const { lessons, filtered, getLessons, loading } = lessonContext;
 
 	// populate the page with list of lessons
 	useEffect(() => {
 		getLessons();
+
 		// eslint-disable-next-line
 	}, []);
 
@@ -17,8 +19,13 @@ const LessonsTable = () => {
 		return <h4>Please add a lesson</h4>;
 	}
 
+	// console.log(lessons);
+
 	return (
-		<div className="LessonsTable">
+		<div className="LessonsTableSorted">
+			<h2>
+				<i className="fas fa-music"></i> Recent Lessons
+			</h2>
 			<div className="table-responsive">
 				<table className="table table-striped table-sm">
 					<thead>
@@ -38,10 +45,15 @@ const LessonsTable = () => {
 									<LessonTableData key={lesson._id} lesson={lesson} />
 								))
 							) : (
-								lessons.map(lesson => {
-									// console.log(lesson);
-									return <LessonTableData key={lesson._id} lesson={lesson} />;
-								})
+								// limit lessons to 4
+								lessons
+									.filter((lesson, index) => index < 4)
+									.sort()
+									.map(lesson => {
+										// console.log(lesson);
+										//console.log(moment(lesson.lessonSlot.format('h:mm a')));
+										return <LessonTableData key={lesson._id} lesson={lesson} />;
+									})
 							)
 						) : (
 							<Spinner />
@@ -53,4 +65,4 @@ const LessonsTable = () => {
 	);
 };
 
-export default LessonsTable;
+export default LessonsTableSorted;

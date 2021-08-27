@@ -94,7 +94,11 @@ const LessonTableData = ({ lesson }) => {
 					>
 						Edit
 					</Link>
-					<a href="#" class="link-primary" onClick={() => setModalIsOpen(true)}>
+					<a
+						href="#"
+						className="link-primary"
+						onClick={() => setModalIsOpen(true)}
+					>
 						Delete
 					</a>
 				</div>

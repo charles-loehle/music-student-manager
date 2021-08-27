@@ -63,7 +63,7 @@ const StudentTableData = ({ student }) => {
 			<td>{instrument}</td>
 			<td>{parentName}</td>
 			<td>{email}</td>
-			<td>{alternateEmail}</td>
+			{/* <td>{alternateEmail}</td> */}
 			<td>{phone}</td>
 			<td>
 				<div className="table-actions" role="group" aria-label="3 buttons">
@@ -74,6 +74,13 @@ const StudentTableData = ({ student }) => {
 					>
 						Edit
 					</Link>
+					<a
+						href="#"
+						className="link-primary"
+						onClick={() => setModalIsOpen(true)}
+					>
+						Delete
+					</a>
 					{/* <button
             className='btn btn-danger btn-sm'
             onClick={() => setModalIsOpen(true)}

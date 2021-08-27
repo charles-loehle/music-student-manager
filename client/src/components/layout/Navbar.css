@@ -15,14 +15,6 @@ ul.navbar-nav.ml-auto.px-3 {
 	flex-direction: row;
 }
 
-ul.navbar-nav.px-3 {
-	flex-direction: row;
-}
-
-.navbar ul {
-	display: flex;
-}
-
 ul.navbar-nav .nav-link {
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;

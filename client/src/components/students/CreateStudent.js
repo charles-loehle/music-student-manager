@@ -120,7 +120,7 @@ const CreateStudent = props => {
 											/>
 										</div>
 									</div>
-									<div className="form-group">
+									{/* <div className="form-group">
 										<label
 											htmlFor="inputPassword3"
 											className="text-muted col-form-label"
@@ -137,7 +137,7 @@ const CreateStudent = props => {
 												className="form-control"
 											/>
 										</div>
-									</div>
+									</div> */}
 									<div className="form-group">
 										<label
 											htmlFor="inputPassword3"

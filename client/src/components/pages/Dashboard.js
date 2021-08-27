@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import LessonsTable from '../lessons/LessonsTable';
+import LessonsTableSorted from '../lessons/LessonsTableSorted';
 import StudentsTable from '../students/StudentsTable';
 import Alerts from '../layout/Alerts';
 import { Link } from 'react-router-dom';
@@ -38,8 +38,8 @@ const Dashboard = () => {
 						</div>
 					</div>
 					<Alerts />
-					<LessonsTable />
-					<StudentsTable />
+					<LessonsTableSorted />
+					{/* <StudentsTable /> */}
 				</main>
 			</div>
 		</div>

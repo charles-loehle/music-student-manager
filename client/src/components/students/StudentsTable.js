@@ -30,7 +30,7 @@ const StudentsTable = () => {
 							<th>Instrument</th>
 							<th>Parent</th>
 							<th>Email</th>
-							<th>Alt. Email</th>
+							{/* <th>Alt. Email</th> */}
 							<th>Phone</th>
 							<th></th>
 						</tr>

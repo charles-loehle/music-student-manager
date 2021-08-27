@@ -61,7 +61,7 @@ const Register = props => {
 		<div className="Register">
 			<div className="container">
 				<div className="row justify-content-center align-items-center">
-					<main role="main" className="col-sm-9 col-md-8 col-lg-6">
+					<main role="main" className="col-sm-9 col-md-6 col-lg-5 col-xl-4">
 						<div className="pt-3 pb-2 mb-3">
 							<Alerts />
 							<h1 className="h3 mb-3 font-weight-normal text-center">
