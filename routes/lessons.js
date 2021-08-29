@@ -33,6 +33,7 @@ router.get('/', auth, async (req, res) => {
 		//   data: lessons,
 		// });
 
+		//console.log(typeof lessons[0].lessonSlot);
 		res.json(lessons);
 	} catch (err) {
 		console.error(err.message);

@@ -48,10 +48,11 @@ const LessonsTableSorted = () => {
 								// limit lessons to 4
 								lessons
 									.filter((lesson, index) => index < 4)
-									.sort()
 									.map(lesson => {
-										// console.log(lesson);
-										//console.log(moment(lesson.lessonSlot.format('h:mm a')));
+										// console.log(typeof lesson.lessonSlot); // string
+										// const dateObj = new Date(lesson.lessonSlot);
+										// console.log(typeof dateObj); // object
+
 										return <LessonTableData key={lesson._id} lesson={lesson} />;
 									})
 							)
