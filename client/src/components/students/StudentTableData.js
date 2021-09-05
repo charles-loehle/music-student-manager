@@ -15,8 +15,10 @@ const StudentTableData = ({ student }) => {
 	const { deleteStudent, setCurrent, clearCurrent } = studentContext;
 	const { setAlert } = alertContext;
 
-	const { _id, name, parentName, email, alternateEmail, phone, instrument } =
-		student;
+	// const { _id, name, parentName, email, alternateEmail, phone, instrument } =
+	// 	student;
+
+	const { _id, name, parentName, email, phone, instrument } = student;
 
 	const onDelete = () => {
 		deleteStudent(_id);

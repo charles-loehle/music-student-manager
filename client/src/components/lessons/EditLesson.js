@@ -15,7 +15,7 @@ const EditLesson = props => {
 	const alertContext = useContext(AlertContext);
 	const lessonContext = useContext(LessonContext);
 
-	const { isAuthenticated } = authContext;
+	// const { isAuthenticated } = authContext;
 	const { setAlert } = alertContext;
 	const { currentLesson, clearCurrentLesson, updateLesson } = lessonContext;
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 import LessonContext from '../../context/lesson/lessonContext';
 import LessonTableData from './LessonTableData';
 import Spinner from '../layout/Spinner';
@@ -20,6 +20,36 @@ const LessonsTableSorted = () => {
 	}
 
 	// console.log(lessons);
+
+	// const sortedLessons =
+	// 	lessons !== null && !loading
+	// 		? lessons.sort((a, b) => {
+	// 				var c = new Date(a.lessonSlot);
+	// 				var d = new Date(b.lessonSlot);
+	// 				return c - d;
+	// 		  })
+	// 		: lessons;
+
+	// console.log(sortedLessons);
+
+	// const sortLessons = () => {
+	// 	if (lessons !== null && !loading) {
+	// 		// console.log(typeof new Date(lessons[0].lessonSlot));
+	// 		const items = lessons.sort((a, b) => {
+	// 			var c = new Date(a.lessonSlot);
+	// 			var d = new Date(b.lessonSlot);
+	// 			return d - c;
+	// 		});
+
+	// 		console.log(items);
+
+	// 		return items
+	// 			.filter((lesson, index) => index < 5)
+	// 			.map(lesson => {
+	// 				return <LessonTableData key={lesson._id} lesson={lesson} />;
+	// 			});
+	// 	}
+	// };
 
 	return (
 		<div className="LessonsTableSorted">
@@ -45,16 +75,16 @@ const LessonsTableSorted = () => {
 									<LessonTableData key={lesson._id} lesson={lesson} />
 								))
 							) : (
-								// limit lessons to 4
+								// // limit lessons to 4
 								lessons
-									.filter((lesson, index) => index < 4)
+									.filter((lesson, index) => index < 5)
 									.map(lesson => {
 										// console.log(typeof lesson.lessonSlot); // string
 										// const dateObj = new Date(lesson.lessonSlot);
 										// console.log(typeof dateObj); // object
-
 										return <LessonTableData key={lesson._id} lesson={lesson} />;
 									})
+								// sortLessons()
 							)
 						) : (
 							<Spinner />

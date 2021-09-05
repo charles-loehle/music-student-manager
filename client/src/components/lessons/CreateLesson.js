@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
+import Spinner from '../layout/Spinner';
+import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
-import { Link } from 'react-router-dom';
 
 import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
@@ -16,8 +17,17 @@ const CreateLesson = props => {
 	const studentContext = useContext(StudentContext);
 
 	const { setAlert } = alertContext;
-	const { students, current, clearCurrent, setCurrent } = studentContext;
+	const { students, getStudents, current, clearCurrent, setCurrent, loading } =
+		studentContext;
 	const { addLesson, clearCurrentLesson } = lessonContext;
+
+	useEffect(() => {
+		authContext.loadUser();
+		getStudents();
+		// eslint-disable-next-line
+	}, []);
+
+	// console.log(students);
 
 	const [lesson, setLesson] = useState({
 		lessonStudentName: '',
@@ -31,15 +41,12 @@ const CreateLesson = props => {
 	const { lessonStudentName, lessonSlot, assignment, instrument, attendance } =
 		lesson;
 
-	useEffect(() => {
-		authContext.loadUser();
-		// eslint-disable-next-line
-	}, []);
-
 	const clearAll = () => {
 		clearCurrentLesson();
 		clearCurrent();
 	};
+
+	// console.log(students);
 
 	const onDropDownChange = e => {
 		const result = students.filter(student => student.name === e.target.value);
@@ -75,6 +82,9 @@ const CreateLesson = props => {
 		props.history.push('/dashboard');
 	};
 
+	// console.log(students);
+	//console.log(loading);
+
 	return (
 		<div className="CreateLesson mb-5">
 			<div className="container-fluid mt-3">
@@ -88,7 +98,26 @@ const CreateLesson = props => {
 								<form onSubmit={onSubmit}>
 									<div className="form-group">
 										<div>
-											<select
+											{students !== null && !loading ? (
+												<select
+													className="custom-select"
+													value={lessonStudentName}
+													onChange={onDropDownChange}
+													name="lessonStudentName"
+												>
+													<option value="Choose a student">
+														Choose a student
+													</option>
+													{students.map(student => (
+														<option key={student._id} value={student.name}>
+															{student.name}
+														</option>
+													))}
+												</select>
+											) : (
+												<Spinner />
+											)}
+											{/* <select
 												className="custom-select"
 												value={lessonStudentName}
 												onChange={onDropDownChange}
@@ -102,7 +131,7 @@ const CreateLesson = props => {
 														{student.name}
 													</option>
 												))}
-											</select>
+											</select> */}
 										</div>
 									</div>
 									<div className="form-group">

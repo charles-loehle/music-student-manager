@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import LessonsTableSorted from '../lessons/LessonsTableSorted';
-import StudentsTable from '../students/StudentsTable';
+// import StudentsTable from '../students/StudentsTable';
 import Alerts from '../layout/Alerts';
 import { Link } from 'react-router-dom';
 

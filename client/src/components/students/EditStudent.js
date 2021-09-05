@@ -19,18 +19,28 @@ const EditStudent = props => {
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 
+	// const [student, setStudent] = useState({
+	// 	name: '',
+	// 	parentName: '',
+	// 	email: '',
+	// 	alternateEmail: '',
+	// 	phone: '',
+	// 	instrument: '',
+	// });
+
 	const [student, setStudent] = useState({
 		name: '',
 		parentName: '',
 		email: '',
-		alternateEmail: '',
 		phone: '',
 		instrument: '',
 	});
 
 	// destructure student state from useState which now includes _id set by useEffect
-	const { _id, name, parentName, email, alternateEmail, phone, instrument } =
-		student;
+	// const { _id, name, parentName, email, alternateEmail, phone, instrument } =
+	// 	student;
+
+	const { _id, name, parentName, email, phone, instrument } = student;
 
 	// populate the form with student data on edit button click and authenticate the user
 	useEffect(() => {
