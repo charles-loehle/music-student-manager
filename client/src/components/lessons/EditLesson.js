@@ -1,17 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
+import SidebarMenu from '../layout/SidebarMenu';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
 import { Link } from 'react-router-dom';
 // import moment from 'moment';
 
 import AlertContext from '../../context/alert/alertContext';
-import AuthContext from '../../context/auth/authContext';
+//import AuthContext from '../../context/auth/authContext';
 import LessonContext from '../../context/lesson/lessonContext';
 
 // pass in props to use onSubmit to redirect
 const EditLesson = props => {
-	const authContext = useContext(AuthContext);
+	//const authContext = useContext(AuthContext);
 	const alertContext = useContext(AlertContext);
 	const lessonContext = useContext(LessonContext);
 
@@ -30,7 +31,7 @@ const EditLesson = props => {
 
 	// populate the form with lesson data on edit button click
 	useEffect(() => {
-		authContext.loadUser();
+		//authContext.loadUser();
 
 		if (currentLesson !== null) {
 			const newCurrent = {
@@ -73,13 +74,14 @@ const EditLesson = props => {
 		// clearAll();
 
 		// redirect back to home page after submit
-		props.history.push('/dashboard');
+		props.history.push('/lessons');
 	};
 
 	return (
 		<div className="EditLesson">
 			<div className="container-fluid mt-3">
 				<div className="row">
+					<SidebarMenu />
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
 							<h2>
@@ -169,7 +171,7 @@ const EditLesson = props => {
 											>
 												Edit Lesson
 											</button>
-											<Link onClick={clearAll} to="/dashboard">
+											<Link onClick={clearAll} to="/lessons">
 												Back
 											</Link>
 										</div>

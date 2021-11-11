@@ -4,14 +4,15 @@ import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
+import SidebarMenu from '../layout/SidebarMenu';
 
-import AuthContext from '../../context/auth/authContext';
+//import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
 import StudentContext from '../../context/student/studentContext';
 import LessonContext from '../../context/lesson/lessonContext';
 
 const CreateLesson = props => {
-	const authContext = useContext(AuthContext);
+	//const authContext = useContext(AuthContext);
 	const alertContext = useContext(AlertContext);
 	const lessonContext = useContext(LessonContext);
 	const studentContext = useContext(StudentContext);
@@ -22,7 +23,7 @@ const CreateLesson = props => {
 	const { addLesson, clearCurrentLesson } = lessonContext;
 
 	useEffect(() => {
-		authContext.loadUser();
+		//authContext.loadUser();
 		getStudents();
 		// eslint-disable-next-line
 	}, []);
@@ -89,6 +90,7 @@ const CreateLesson = props => {
 		<div className="CreateLesson mb-5">
 			<div className="container-fluid mt-3">
 				<div className="row">
+					<SidebarMenu />
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
 							<h2 className="h4 mb-0">Create a New Lesson</h2>

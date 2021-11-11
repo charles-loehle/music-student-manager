@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import LessonItem from './LessonItem';
 import LessonsTable from './LessonsTable';
+import SidebarMenu from '../layout/SidebarMenu';
 import LessonContext from '../../context/lesson/lessonContext';
 import Spinner from '../layout/Spinner';
 
@@ -22,6 +23,7 @@ const Lessons = () => {
 		<div className="Lessons">
 			<div className="container-fluid">
 				<div className="row">
+					<SidebarMenu />
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
 							<h1>Lessons</h1>

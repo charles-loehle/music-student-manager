@@ -1,27 +1,26 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import SidebarMenu from './SidebarMenu';
 
-import AuthContext from '../../context/auth/authContext';
+//import AuthContext from '../../context/auth/authContext';
 import StudentContext from '../../context/student/studentContext';
 import LessonContext from '../../context/lesson/lessonContext';
-import './Navbar.css';
+// import './Navbar.css';
 
 const NavbarTestComponent = ({ title, icon }) => {
-	const authContext = useContext(AuthContext);
+	//const authContext = useContext(AuthContext);
 	const studentContext = useContext(StudentContext);
 	const lessonContext = useContext(LessonContext);
 
-	const { isAuthenticated, logout, user } = authContext;
+	//const { isAuthenticated, logout, user } = authContext;
 	const { clearStudents } = studentContext;
 	const { clearLessons } = lessonContext;
 
-	const onLogout = () => {
-		logout();
-		clearStudents();
-		clearLessons();
-	};
+	// const onLogout = () => {
+	// 	logout();
+	// 	clearStudents();
+	// 	clearLessons();
+	// };
 
 	const authLinks = (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top ">
@@ -41,11 +40,11 @@ const NavbarTestComponent = ({ title, icon }) => {
 			</button>
 
 			<ul className="navbar-nav ml-auto px-3">
-				<li className="nav-link text-nowrap">Hello {user && user.name}</li>
+				{/* <li className="nav-link text-nowrap">Hello {user && user.name}</li> */}
 				<li className="nav-item text-nowrap">
-					<a onClick={onLogout} className="nav-link" href="#!">
-						<i className="fas fa-sign-out-alt"></i> Sign out
-					</a>
+					{/* <a onClick={onLogout} className="nav-link" href="#!"> */}
+					<i className="fas fa-sign-out-alt"></i> Sign out
+					{/* </a> */}
 				</li>
 			</ul>
 		</nav>
@@ -70,12 +69,18 @@ const NavbarTestComponent = ({ title, icon }) => {
 			<div className="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul className="navbar-nav ml-auto">
 					<li className="nav-item">
-						<Link className="nav-link" to="/register">
+						{/* <Link className="nav-link" to="/register">
+							Sign Up
+						</Link> */}
+						<Link className="nav-link" to="#">
 							Sign Up
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link" to="login">
+						{/* <Link className="nav-link" to="login">
+							Login
+						</Link> */}
+						<Link className="nav-link" to="#">
 							Login
 						</Link>
 					</li>
@@ -86,8 +91,9 @@ const NavbarTestComponent = ({ title, icon }) => {
 
 	return (
 		<div className="NavbarTestComponent">
-			{isAuthenticated ? authLinks : guestLinks}
-			{isAuthenticated && <SidebarMenu />}
+			{/* {isAuthenticated ? authLinks : guestLinks}
+			{isAuthenticated && <SidebarMenu />} */}
+			{guestLinks}
 		</div>
 	);
 };

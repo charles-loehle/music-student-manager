@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react';
-import Modal from 'react-modal';
 import moment from 'moment';
 import LessonContext from '../../context/lesson/lessonContext';
 import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 
-Modal.setAppElement('#root');
 const LessonTableData = ({ lesson }) => {
 	const lessonContext = useContext(LessonContext);
 	const alertContext = useContext(AlertContext);
@@ -22,13 +20,11 @@ const LessonTableData = ({ lesson }) => {
 	} = lessonContext;
 	const { setAlert } = alertContext;
 
-	const [modalIsOpen, setModalIsOpen] = useState(false);
-
 	const { _id, assignment, attendance, lessonSlot, student } = lesson;
 
 	const onDelete = () => {
 		deleteLesson(_id);
-		setModalIsOpen(false);
+		// setModalIsOpen(false);
 		clearCurrentLesson();
 		setAlert('Lesson Deleted', 'danger');
 	};
@@ -40,28 +36,6 @@ const LessonTableData = ({ lesson }) => {
 
 	return (
 		<tr>
-			<Modal
-				isOpen={modalIsOpen}
-				onRequestClose={() => setModalIsOpen(false)}
-				style={{
-					overlay: {
-						backgroundColor: 'rgba(128,128,128,0.3)',
-					},
-					content: {
-						top: '102px',
-						left: '103px',
-						right: '103px',
-						bottom: '275px',
-					},
-				}}
-			>
-				<h2>Are you sure you want to delete this lesson?</h2>
-				<p>This action cannot be undone</p>
-				<div>
-					<button onClick={onDelete}>Delete Lesson</button>
-					<button onClick={() => setModalIsOpen(false)}>Cancel</button>
-				</div>
-			</Modal>
 			<td>{moment(lessonSlot).format('dddd MMMM Do YYYY, h:mm a')}</td>
 			<td>{student.name}</td>
 			<td>{assignment}</td>
@@ -94,13 +68,48 @@ const LessonTableData = ({ lesson }) => {
 					>
 						Edit
 					</Link>
-					<a
-						href="#"
-						className="link-primary"
-						onClick={() => setModalIsOpen(true)}
+					<button
+						type="button"
+						className="btn btn-link p-0"
+						data-bs-toggle="modal"
+						data-bs-target="#exampleModal"
 					>
 						Delete
-					</a>
+					</button>
+
+					<div
+						className="modal fade"
+						id="exampleModal"
+						tabIndex="-1"
+						aria-labelledby="exampleModalLabel"
+						aria-hidden="true"
+					>
+						<div className="modal-dialog">
+							<div className="modal-content">
+								<div className="modal-header border-0">
+									<h5 className="modal-title" id="exampleModalLabel">
+										Delete lesson
+									</h5>
+								</div>
+								<div className="modal-body border-0">
+									Are you sure you want to delete this student and their
+									lessons? This action cannot be undone.
+								</div>
+								<div className="modal-footer border-0 bg-light">
+									<button className="btn btn-light" data-bs-dismiss="modal">
+										Cancel
+									</button>
+									<button
+										className="btn btn-danger ml-2"
+										onClick={onDelete}
+										data-bs-dismiss="modal"
+									>
+										Delete Lesson
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</td>
 		</tr>

@@ -3,6 +3,7 @@ import LessonContext from '../../context/lesson/lessonContext';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import moment from 'moment';
+import SidebarMenu from '../layout/SidebarMenu';
 import userIcon from '../../img/user-icon-placeholder.png';
 
 const Lesson = ({ match }) => {
@@ -18,6 +19,7 @@ const Lesson = ({ match }) => {
 		<div className="Lesson">
 			<div className="container-fluid">
 				<div className="row">
+					<SidebarMenu />
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 							<h1>Lesson Details</h1>

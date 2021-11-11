@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
-
+import SidebarMenu from '../layout/SidebarMenu';
 import AlertContext from '../../context/alert/alertContext';
-import AuthContext from '../../context/auth/authContext';
+//import AuthContext from '../../context/auth/authContext';
 import StudentContext from '../../context/student/studentContext';
 
 // pass in props to use onSubmit to redirect
 const EditStudent = props => {
-	const authContext = useContext(AuthContext);
+	//const authContext = useContext(AuthContext);
 	const studentContext = useContext(StudentContext);
 	const alertContext = useContext(AlertContext);
 
@@ -16,8 +15,6 @@ const EditStudent = props => {
 		studentContext;
 
 	const { setAlert } = alertContext;
-
-	const [modalIsOpen, setModalIsOpen] = useState(false);
 
 	// const [student, setStudent] = useState({
 	// 	name: '',
@@ -44,7 +41,7 @@ const EditStudent = props => {
 
 	// populate the form with student data on edit button click and authenticate the user
 	useEffect(() => {
-		authContext.loadUser();
+		//authContext.loadUser();
 
 		if (current !== null) {
 			// if current is populated, get data from current and set student state with it
@@ -52,7 +49,7 @@ const EditStudent = props => {
 				...current,
 			};
 			setStudent(newCurrent);
-			console.log(student);
+			// console.log(student);
 		} else {
 			setStudent({
 				name: '',
@@ -68,10 +65,10 @@ const EditStudent = props => {
 
 	const onDelete = () => {
 		deleteStudent(_id);
-		setModalIsOpen(false);
+		//setModalIsOpen(false);
 		clearCurrent();
 		// redirect back to home page after submit
-		props.history.push('/dashboard');
+		props.history.push('/students');
 		setAlert('Student Deleted', 'danger');
 	};
 
@@ -98,35 +95,14 @@ const EditStudent = props => {
 		// set current back to null
 		clearAll();
 		// redirect back to home page after submit
-		props.history.push('/dashboard');
+		props.history.push('/students');
 	};
 
 	return (
 		<div className="EditStudent">
-			<Modal
-				isOpen={modalIsOpen}
-				onRequestClose={() => setModalIsOpen(false)}
-				style={{
-					overlay: {
-						backgroundColor: 'rgba(128,128,128,0.3)',
-					},
-					content: {
-						top: '102px',
-						left: '103px',
-						right: '103px',
-						bottom: '275px',
-					},
-				}}
-			>
-				<h2>Are you sure you want to delete this student and their lessons?</h2>
-				<p>This action cannot be undone</p>
-				<div>
-					<button onClick={onDelete}>Delete Student</button>
-					<button onClick={() => setModalIsOpen(false)}>Cancel</button>
-				</div>
-			</Modal>
 			<div className="container-fluid mt-3 mb-5">
 				<div className="row">
+					<SidebarMenu />
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
 							<h1>Edit Student</h1>
@@ -246,11 +222,11 @@ const EditStudent = props => {
 										<div>
 											<button
 												type="submit"
-												className="btn btn-primary btn-block"
+												className="btn btn-primary btn-block mb-2"
 											>
 												Update Student
 											</button>
-											<Link onClick={clearAll} to="/dashboard">
+											<Link onClick={clearAll} to="/students">
 												Back
 											</Link>
 										</div>

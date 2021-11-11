@@ -1,16 +1,13 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-modal';
 import StudentContext from '../../context/student/studentContext';
 import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-Modal.setAppElement('#root');
 const StudentTableData = ({ student }) => {
 	const studentContext = useContext(StudentContext);
 	const alertContext = useContext(AlertContext);
-
-	const [modalIsOpen, setModalIsOpen] = useState(false);
 
 	const { deleteStudent, setCurrent, clearCurrent } = studentContext;
 	const { setAlert } = alertContext;
@@ -21,8 +18,8 @@ const StudentTableData = ({ student }) => {
 	const { _id, name, parentName, email, phone, instrument } = student;
 
 	const onDelete = () => {
+		// console.log('Student deleted');
 		deleteStudent(_id);
-		setModalIsOpen(false);
 		clearCurrent();
 		setAlert('Student Deleted', 'danger');
 	};
@@ -38,29 +35,6 @@ const StudentTableData = ({ student }) => {
 
 	return (
 		<tr>
-			<Modal
-				isOpen={modalIsOpen}
-				onRequestClose={() => setModalIsOpen(false)}
-				style={{
-					overlay: {
-						backgroundColor: 'rgba(128,128,128,0.3)',
-					},
-					content: {
-						top: '102px',
-						left: '103px',
-						right: '103px',
-						bottom: '275px',
-					},
-				}}
-			>
-				<h2>Are you sure you want to delete this student and their lessons?</h2>
-				<p>This action cannot be undone</p>
-				<div>
-					<button onClick={onDelete}>Delete Student</button>
-					<button onClick={() => setModalIsOpen(false)}>Cancel</button>
-				</div>
-			</Modal>
-
 			<td>{name}</td>
 			<td>{instrument}</td>
 			<td>{parentName}</td>
@@ -76,29 +50,48 @@ const StudentTableData = ({ student }) => {
 					>
 						Edit
 					</Link>
-					<a
-						href="#"
-						className="link-primary"
-						onClick={() => setModalIsOpen(true)}
+					<button
+						type="button"
+						className="btn btn-link p-0"
+						data-bs-toggle="modal"
+						data-bs-target="#exampleModal"
 					>
 						Delete
-					</a>
-					{/* <button
-            className='btn btn-danger btn-sm'
-            onClick={() => setModalIsOpen(true)}
-          >
-            Delete
-          </button>
-          <Link to={`/student/${_id}`} className='btn btn-secondary'>
-            Lessons
-          </Link>
-          <Link
-            onClick={onNewLesson}
-            className='btn btn-secondary'
-            to='/create-lesson'
-          >
-            New Lesson
-          </Link> */}
+					</button>
+
+					<div
+						className="modal fade"
+						id="exampleModal"
+						tabIndex="-1"
+						aria-labelledby="exampleModalLabel"
+						aria-hidden="true"
+					>
+						<div className="modal-dialog">
+							<div className="modal-content">
+								<div className="modal-header border-0">
+									<h5 className="modal-title" id="exampleModalLabel">
+										Delete student
+									</h5>
+								</div>
+								<div className="modal-body border-0">
+									Are you sure you want to delete this student and their
+									lessons? This action cannot be undone.
+								</div>
+								<div className="modal-footer border-0 bg-light">
+									<button className="btn btn-light" data-bs-dismiss="modal">
+										Cancel
+									</button>
+									<button
+										className="btn btn-danger ml-2"
+										onClick={onDelete}
+										data-bs-dismiss="modal"
+									>
+										Delete Student
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</td>
 		</tr>

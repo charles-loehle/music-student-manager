@@ -1,21 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import AuthContext from '../../context/auth/authContext';
+import SidebarMenu from '../layout/SidebarMenu';
+//import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
 import StudentContext from '../../context/student/studentContext';
 
 const CreateStudent = props => {
-	const authContext = useContext(AuthContext);
+	//const authContext = useContext(AuthContext);
 	const alertContext = useContext(AlertContext);
 	const studentContext = useContext(StudentContext);
 
-	useEffect(() => {
-		authContext.loadUser();
-		// eslint-disable-next-line
-	}, []);
+	// useEffect(() => {
+	// 	authContext.loadUser();
+	// 	// eslint-disable-next-line
+	// }, []);
 
-	const { addStudent, current } = studentContext;
+	const { addStudent, current, clearCurrent } = studentContext;
 	const { setAlert } = alertContext;
 
 	const [student, setStudent] = useState({
@@ -30,9 +30,9 @@ const CreateStudent = props => {
 		// attendance: '',
 	});
 
-	// const clearAll = () => {
-	//   clearCurrent();
-	// };
+	const clearAll = () => {
+		clearCurrent();
+	};
 
 	const {
 		name,
@@ -53,8 +53,8 @@ const CreateStudent = props => {
 			setAlert('Student Added', 'success');
 		}
 
-		// // clear the form
-		// clearAll();
+		// clear the form
+		clearAll();
 
 		// redirect back to home page after submit
 		props.history.push('/dashboard');
@@ -67,6 +67,7 @@ const CreateStudent = props => {
 		<div className="CreateStudent mb-5">
 			<div className="container-fluid mt-3">
 				<div className="row">
+					<SidebarMenu />
 					<main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 						<div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
 							<h2 className="h4 mb-0">Create New Student</h2>
@@ -205,7 +206,9 @@ const CreateStudent = props => {
 											>
 												Create Student
 											</button>
-											<Link to="/dashboard">Back to dashboard</Link>
+											<Link onClick={clearCurrent} to="/dashboard">
+												Back to dashboard
+											</Link>
 										</div>
 									</div>
 								</form>

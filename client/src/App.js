@@ -36,51 +36,60 @@ if (localStorage.token) {
 
 const App = () => {
 	return (
-		<AuthState>
-			<StudentState>
-				<LessonState>
-					<AlertState>
-						<Router>
-							<div className="App">
-								{/* <NavbarComponent /> */}
-								<NavbarTestComponent />
-								<Switch>
-									<Route exact path="/" component={Landing} />
-									<Route exact path="/about" component={About} />
-									<Route exact path="/register" component={Register} />
-									<Route exact path="/login" component={Login} />
-									<PrivateRoute exact path="/dashboard" component={Dashboard} />
-									<PrivateRoute exact path="/students" component={Students} />
-									<PrivateRoute exact path="/student/:id" component={Student} />
-									<PrivateRoute
-										exact
-										path="/create-student"
-										component={CreateStudent}
-									/>
-									<PrivateRoute
-										exact
-										path="/edit-student"
-										component={EditStudent}
-									/>
-									<PrivateRoute exact path="/lessons" component={Lessons} />
-									<PrivateRoute exact path="/lesson/:id" component={Lesson} />
-									<PrivateRoute
-										exact
-										path="/edit-lesson"
-										component={EditLesson}
-									/>
-									<PrivateRoute
-										exact
-										path="/create-lesson"
-										component={CreateLesson}
-									/>
-								</Switch>
-							</div>
-						</Router>
-					</AlertState>
-				</LessonState>
-			</StudentState>
-		</AuthState>
+		// <AuthState>
+		<StudentState>
+			<LessonState>
+				<AlertState>
+					<Router>
+						<div className="App">
+							{/* <NavbarComponent /> */}
+							<NavbarTestComponent />
+							<Switch>
+								<Route exact path="/" component={Landing} />
+								<Route exact path="/about" component={About} />
+								<Route exact path="/register" component={Register} />
+								<Route exact path="/login" component={Login} />
+								{/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
+								<Route exact path="/dashboard" component={Dashboard} />
+								{/* <PrivateRoute exact path="/students" component={Students} /> */}
+								<Route exact path="/students" component={Students} />
+								{/* <PrivateRoute exact path="/student/:id" component={Student} /> */}
+								<Route exact path="/student/:id" component={Student} />
+								{/* <PrivateRoute
+									exact
+									path="/create-student"
+									component={CreateStudent}
+								/> */}
+								<Route exact path="/create-student" component={CreateStudent} />
+								{/* <PrivateRoute
+									exact
+									path="/edit-student"
+									component={EditStudent}
+								/> */}
+								<Route exact path="/edit-student" component={EditStudent} />
+								{/* <PrivateRoute exact path="/lessons" component={Lessons} /> */}
+								<Route exact path="/lessons" component={Lessons} />
+								{/* <PrivateRoute exact path="/lesson/:id" component={Lesson} /> */}
+								<Route exact path="/lesson/:id" component={Lesson} />
+								{/* <PrivateRoute
+									exact
+									path="/edit-lesson"
+									component={EditLesson}
+								/> */}
+								<Route exact path="/edit-lesson" component={EditLesson} />
+								{/* <PrivateRoute
+									exact
+									path="/create-lesson"
+									component={CreateLesson}
+								/> */}
+								<Route exact path="/create-lesson" component={CreateLesson} />
+							</Switch>
+						</div>
+					</Router>
+				</AlertState>
+			</LessonState>
+		</StudentState>
+		// </AuthState>
 	);
 };
 
